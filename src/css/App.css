@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap");
+/*----------------------------------------------------
+
+theme
+
+----------------------------------------------------*/
+/*----------------------------------------------------
+
+base
+
+----------------------------------------------------*/
+html {
+  font-size: 62.5%; }
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background: #000;
+  font-family: "Julius Sans One", sans-serif; }
+
+img {
+  width: 100%; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  letter-spacing: 1px; }
+
+li {
+  list-style: none;
+  letter-spacing: 1px; }
+
+p {
+  letter-spacing: 0.3em;
+  color: #fff; }
+
+/*----------------------------------------------------
+
+layout
+
+----------------------------------------------------*/
+.l-top-header {
+  padding: 137px 0 0 0; }
+
+.l-top-header {
+  margin: 0 0 124px 0; }
+
+.l-top-container {
+  margin: 86px 0 222px 0; }
+
+.l-top-article_box {
+  margin: 86px 0 0 0; }
+
+/*----------------------------------------------------
+
+module
+
+----------------------------------------------------*/
+.head-title {
+  margin: 120px auto 50px;
+  text-align: center;
+  letter-spacing: 25px;
+  overflow: hidden; }
+
+.head-title_text {
+  font-weight: 200;
+  font-size: 3rem;
+  color: #fff; }
+
+.header-image {
+  width: 200px;
+  margin: 0 auto; }
+
+.top-header_title {
+  text-align: center;
+  color: #6b6b6b;
+  font-size: 3.6rem;
+  letter-spacing: 25px;
+  margin-bottom: 33px; }
+
+.top-header_text {
+  font-size: 1.5rem;
+  color: #6b6b6b;
+  text-align: center;
+  line-height: 1.9; }
+
+.top-section_title {
+  font-weight: normal;
+  font-size: 2.8rem;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 20px;
+  line-height: 1; }
+
+.main_section-title {
+  text-align: center; }
+  .main_section-title::before {
+    content: "";
+    display: block;
+    max-width: 232px;
+    max-height: auto;
+    width: 100%;
+    height: 232px;
+    margin: 0 auto;
+    background-image: url("../images/depression_main_image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%; }
+
+.disaster .main_section-title::before {
+  background-image: url("../images/disaster_main_image.jpg");
+  background-position: center; }
+
+.doom .main_section-title::before {
+  background-image: url("../images/doom_main_image.jpg");
+  background-position: bottom; }
+
+.hideous .main_section-title::before {
+  background-image: url("../images/hideous_main_image.jpg");
+  background-position: bottom; }
+
+.main_section-title_inner {
+  font-weight: normal;
+  font-size: 1.8rem;
+  line-height: 1;
+  letter-spacing: 0.5em;
+  margin: 28px 0 25px;
+  color: #fff;
+  display: block; }
+
+.main_section-caption {
+  font-weight: normal;
+  font-size: 1.5rem;
+  color: #6b6b6b;
+  text-align: center; }
+
+.top-article_item {
+  margin: 0 0 181px; }
