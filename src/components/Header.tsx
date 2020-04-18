@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import Navigation from './Navigation';
 import {useSpring, animated, config} from 'react-spring';
 import { Link } from "react-router-dom";
@@ -47,5 +46,4 @@ function Header(props: OwnProps) {
   );
 }
 
-connect()(Header);
-  export default Header;
+export default Header;

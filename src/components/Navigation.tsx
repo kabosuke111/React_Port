@@ -9,7 +9,6 @@ const Navigation: React.FC = () => {
         classnames: "",
     });
 
-
     const [booleans, boolAct] = useState(true);
 
     const classname_toggle = () => {
