@@ -1,7 +1,23 @@
 import React from 'react';
+import {useSpring, useTrail, animated, config} from 'react-spring';
+import { Link } from "react-router-dom";
+
+//アニメーションで使う
+interface Animation {
+    o:number;
+    from: {o:number};
+}
+
+//このコンポーネントのみで使う
+interface LocalValue {
+    origin_title: string;
+    change_title: string;
+    slice_text: Array<string>;
+}
 
 const TopMain = () => {
 
+    //記事の内容をここに書く。ループ処理で一気に表示する。
     const Articles = [
         {
             classnames: 'depression' ,
@@ -25,22 +41,61 @@ const TopMain = () => {
         }
     ]
 
+    //localvalueを初期化
+    const local_value: LocalValue = {
+        origin_title: "CONTENTS",
+        change_title: "",
+        slice_text: [],
+    }
+
+    //アニメーション処理のため、メインタイトルを分割する。
+    for(let i = 0; i < local_value.origin_title.length; i++) {
+        local_value.change_title = local_value.origin_title.slice(i, i+1);
+        local_value.slice_text.push(local_value.change_title);
+    }
+
+    //----------------アニメーション----------------
+    const spring_anim = useSpring<Animation>({
+        o: 1,
+        from: {o: 0},
+        config: {velocity: 0.2, duration: 2000},
+    });
+
+    //トレイルアニメーション
+    const trail_anim = useTrail(local_value.slice_text.length, {
+        config: config.slow,
+        display: "inline-block",
+        opacity: 1,
+        transform : `translateY(0em)`,
+        from: {opacity: 0, transform : `translateY(1em)`}
+    });
+    //----------------ここまで----------------
+
+    //クラス名に変数を入れる処理
     const names = function(name: string) {
         return 'top-article_item ' + name;
     }
 
+    const linkNames = function(name: string) {
+        return `/${name}/`;
+    }
+
     return (
         <section className="l-top-container">
-            <h2 className="top-section_title">CONTENTS</h2>
+            <h2 className="top-section_title">{trail_anim.map((value,index)=>(
+                <animated.span className="top-section_title-text" style={{...value}}>
+                    {local_value.slice_text[index]}
+                </animated.span>
+            ))}</h2>
             <div className="l-top-article_box">
                 {Articles.map((value,index:number)=>(
-                    <article className={names(value.classnames)}>
-                        <h3 className="main_section-title"><span className="main_section-title_inner">{value.title}</span></h3>
-                        <p className="main_section-caption">{value.text}</p>
-                    </article>
-                ))
-
-                }
+                    <Link to={linkNames(value.classnames)}>
+                        <article className={names(value.classnames)}>
+                            <h3 className="main_section-title"><span className="main_section-title_inner">{value.title}</span></h3>
+                            <p className="main_section-caption">{value.text}</p>
+                        </article>
+                    </Link>
+                ))}
             </div>
         </section>
     );

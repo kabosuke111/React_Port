@@ -20,9 +20,9 @@
 theme
 
 ----------------------------------------------------*/
-$main_color: #000;
-$main_font_color: #6b6b6b;
+$main_color: #6b6b6b;
 $main_font: 'Julius Sans One', sans-serif;
+$main_font-size: 1.5rem;
 
 /*----------------------------------------------------
 
@@ -42,6 +42,7 @@ html {
 
 body {
     background: #000;
+    font-size: $main_font-size;
     font-family: $main_font;
 }
 
@@ -52,7 +53,7 @@ img {
 a {
     text-decoration: none;
     color: inherit;
-    letter-spacing: 1px;
+    letter-spacing: 0.3em;
 }
 
 li {
@@ -71,10 +72,24 @@ layout
 
 ----------------------------------------------------*/
 
+#root {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+}
 
+#l-navigation {
+    
+    background: black;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: 0.5s;
+    z-index: 10;
+}
 
-.l-top-header {
-    padding: 137px 0 0 0;
+#l-main {
+    margin-top: 206px
 }
 
 .l-top-header {
@@ -89,13 +104,70 @@ layout
     margin: 86px 0 0 0;
 }
 
+.l-article_aside {
+    position: fixed;
+    bottom: 0;
+    border-top: 1px #6b6b6b solid;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    z-index: 5;
+    
+}
 
-/*----------------------------------------------------
 
-module
+/*============================================================
 
-----------------------------------------------------*/
 
+                        module
+
+
+============================================================*/
+
+.navi-ul {
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    top: 50px;
+}
+
+.navi-item {
+    font-size: 2rem;
+    margin-top: 50px;
+}
+
+.hamburger-menu {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    right: 20px;
+    top: 10px;
+    z-index:11;
+}
+
+.hamburger-line {
+    display: block;
+    width: 44px;
+    border: solid 1px #6b6b6b;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &:nth-of-type(2) {
+        width: 20px;
+        border: solid 1px #6b6b6b;
+        top: 12px;
+    }
+    
+    &:nth-of-type(3) {
+        width: 32px;
+        border: solid 1px #6b6b6b;
+        top: 22px;
+    }
+}
 .head-title {
     margin: 120px auto 50px;
     text-align: center;
@@ -119,15 +191,18 @@ module
 
 .top-header_title {
     text-align: center;
-    color: $main_font_color;
+    color: $main_color;
     font-size: 3.6rem;
     letter-spacing: 25px;
-    margin-bottom: 33px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 165px;
 }
 
 .top-header_text {
     font-size: 1.5rem;
-    color: $main_font_color;
+    color: $main_color;
     text-align: center;
     line-height: 1.9;
 }
@@ -203,16 +278,74 @@ module
         weight: normal;
         size: 1.5rem;
     }
-    color: $main_font_color;
+    color: $main_color;
     text-align: center;
 }
 
+.l-top-article_box {
+    margin: 86px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .top-article_item {
-    margin: 0 0 181px;
+    margin: 0px 85px 181px;
+}
+
+//------------------ 各記事内のルール ------------------
+.main_contents-title {
+    @extend .main_section-title_inner;
+    text-align: center;
+}
+
+.main_contents-image {
+    @include WHM(175px, none, 100%, auto, 64px auto 30px);
+    display: block;
 }
 
 
+//---------------------------------------------------------------------------
+//
+//                                module_depression
+//
+//---------------------------------------------------------------------------
+.aside_navigation-ul {
+    @include FLEX(space-around, nowrap);
+    @include WHM(800px);
+}
+
+.aside_navigation-li {
+    color: #fff;
+    font: {
+        weight: normal;
+        size: 1.2rem;
+    }
+    max-width: 200px;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0px;
+    transition: 0.3s ease-in-out;
+    
+    &:hover {
+        cursor: pointer;
+        background: grey;
+        color: #000;
+    }
+}
+
+/*============================================================
 
 
+                        state
 
-//state
+
+============================================================*/
+
+#l-navigation.is-navigation_open  {
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: grey;
+}

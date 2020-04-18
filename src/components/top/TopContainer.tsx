@@ -5,7 +5,7 @@ import Footer from '../Footer';
 
 const TopContainer = () => {
     return (
-        <main id="l-main">
+        <main id="l-main" className="top">
             <TopHeader />
             <TopMain />
             <Footer />

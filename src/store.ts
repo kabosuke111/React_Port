@@ -13,7 +13,7 @@ interface ActionType {
 }
 
 export const initialState: State = {
-    site_title: 'DEPRESSION',
+    site_title: 'GREY',
 }
 
 export const reducer = (state = initialState, action: ActionType) => {

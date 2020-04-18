@@ -2,8 +2,6 @@
 import React, {Component, Fragment} from 'react';
 import {useSpring, useTrail, animated, config} from 'react-spring';
 import Image from '../../../images/depression_main_image.jpg';
-import { useDispatch, useSelector } from "react-redux";
-import { getDefaultNormalizer } from '@testing-library/react';
 
 interface Props {
     site_title: string;
@@ -36,8 +34,6 @@ const Header_Content: React.FC<Props> = (props: Props) => {
         from: {o: 0},
         config: {velocity: 0.2, duration: 2000},
     });
-
-
 
     const trail_anim = useTrail(local_value.slice_text.length, {
         config: config.slow,
