@@ -79,13 +79,13 @@ layout
 }
 
 #l-navigation {
-    
     background: black;
     position: fixed;
-    top: 0;
-    right: 0;
     transition: 0.5s;
     z-index: 10;
+    background: grey;
+    top: 0;
+    right: 0;
 }
 
 #l-main {
@@ -129,7 +129,6 @@ layout
     width: 300px;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
     text-align: center;
     top: 50px;
 }
@@ -137,35 +136,32 @@ layout
 .navi-item {
     font-size: 2rem;
     margin-top: 50px;
+    opacity: 0;
 }
 
 .hamburger-menu {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 30px;
     right: 20px;
     top: 10px;
     z-index:11;
+    cursor: pointer;
 }
 
 .hamburger-line {
     display: block;
-    width: 44px;
     border: solid 1px #6b6b6b;
     position: absolute;
     top: 0;
     right: 0;
 
     &:nth-of-type(2) {
-        width: 20px;
         border: solid 1px #6b6b6b;
-        top: 12px;
     }
     
     &:nth-of-type(3) {
-        width: 32px;
         border: solid 1px #6b6b6b;
-        top: 22px;
     }
 }
 .head-title {

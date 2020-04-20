@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useCallback} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {useSpring, useTrail, animated, config} from 'react-spring';
 import { Link } from "react-router-dom";
+import { initialState, reducer, State } from '../../../store';
 
 //アニメーションで使う
 interface Animation {
@@ -16,7 +18,12 @@ interface LocalValue {
 }
 
 const TopMain = () => {
+    const selector = useSelector((state: State) => state);
+    const dispatch = useDispatch();
 
+    const titleChange = useCallback(
+        () => dispatch({ type: 'CHANGE_TEXT' }), [dispatch]);
+    
     //記事の内容をここに書く。ループ処理で一気に表示する。
     const Articles = [
         {
@@ -82,6 +89,7 @@ const TopMain = () => {
 
     return (
         <section className="l-top-container">
+            <button style={{color: "#fff"}} onClick={titleChange}>aaaa</button>
             <h2 className="top-section_title">{trail_anim.map((value,index)=>(
                 <animated.span className="top-section_title-text" style={{...value}}>
                     {local_value.slice_text[index]}
@@ -97,6 +105,7 @@ const TopMain = () => {
                     </Link>
                 ))}
             </div>
+            
         </section>
     );
 }

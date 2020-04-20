@@ -5,13 +5,8 @@ import './css/App.css';
 import Header from './components/Header';
 import TopContainer from './components/top/TopContainer';
 import DepressionContainer from './components/page_depression/DepressionContainer';
-import State from './store';
 import { BrowserRouter as Router, Route, RouteComponentProps } from "react-router-dom";
-
-interface OwnProps {
-  site_title: string;
-  
-}
+import { State } from './store';
 
 interface localProps {
   title: string;
@@ -22,9 +17,9 @@ const WINDOW_TOP = () => {
   window.scrollTo(0, 0)
   return null;
 }
+
 const CreatePage = (props: localProps) => {
-  const dispatch = useDispatch();
-  const selector = useSelector((state: OwnProps) => state);
+  const selector = useSelector((state: State) => state);
 
   const [toggle, toggleSet] = useState(props.title);
 
@@ -36,24 +31,25 @@ const CreatePage = (props: localProps) => {
   });
 
   return (
-  <div>
-    {transitions.map(({item, key, props}) => (
-    item == "top" ?
-      <animated.div style={props}>
-        <WINDOW_TOP />
-        <Header site_title={selector.site_title} top={165} left={50} translates={-50} colors="#6b6b6b" frags="top" />
-        <TopContainer />
-      </animated.div>:<div></div>
-    ))}
-    {transitions.map(({item, key, props}) => (
-      item == "depression" ?
-      <animated.div style={props}>
-        <WINDOW_TOP />
-        <Header site_title={selector.site_title} top={10} left={3} translates={0} colors="#fff" frags="article" />
-        <DepressionContainer />
-      </animated.div>:<div></div>
-    ))}
-  </div>)
+    <div>
+      {transitions.map(({item, key, props}) => (
+      item == "top" ?
+        <animated.div style={props}>
+          <WINDOW_TOP />
+          <Header site_title={selector.site_title} top={165} left={50} translates={-50} colors="#6b6b6b" frags="top" />
+          <TopContainer />
+        </animated.div>:<div></div>
+      ))}
+      {transitions.map(({item, key, props}) => (
+        item == "depression" ?
+        <animated.div style={props}>
+          <WINDOW_TOP />
+          <Header site_title={selector.site_title} top={10} left={3} translates={0} colors="#fff" frags="article" />
+          <DepressionContainer />
+        </animated.div>:<div></div>
+      ))}
+    </div>
+  )
 }
 
 const App:React.FC = () => {

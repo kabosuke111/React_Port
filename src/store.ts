@@ -21,7 +21,7 @@ export const reducer = (state = initialState, action: ActionType) => {
         case 'CHANGE_TEXT':
             return {
                 ...state,
-                site_title: "mo",
+                site_title: "KAWATTAYO",
             }
         default: return state;
     }

@@ -1,27 +1,9 @@
 
-import React, {Component, Fragment, useState} from 'react';
-import {useSpring, animated, config} from 'react-spring';
-import { useDispatch, useSelector } from "react-redux";
+import React, {useState, useRef} from 'react';
+import {useTrail, animated, useChain, useSpring} from 'react-spring';
 import { Link } from "react-router-dom";
 
 const Navigation: React.FC = () => {
-    const [state, stateAct] = useState({
-        classnames: "",
-    });
-
-    const [booleans, boolAct] = useState(true);
-
-    const classname_toggle = () => {
-        boolAct(!booleans);
-
-        if(booleans){
-            stateAct({classnames: "is-navigation_open"})
-        } else {
-            stateAct({classnames: ""})
-        }
-        return state;
-    }
-
     const Urls = [
         {
             url_name: '/',
@@ -45,18 +27,53 @@ const Navigation: React.FC = () => {
         },
     ]
 
+    const [booleans, boolAct] = useState(false);
+
+    const spring = useSpring({
+        delay: 0,
+        width: booleans ? `100vw` : `0vw`,
+        height: booleans ? `100vh` : `0vh`,
+    });
+
+    const trails = useTrail(Urls.length, {
+        delay: booleans ? 800 : 0,
+        transform: booleans ? `translateX(-50%)` : `translateX(0%)`,
+        opacity: booleans ? 1 : 0,
+    });
+
+    //ハンバーガーメニュー
+    const line_spring_L = useSpring({
+        transform: booleans ? `rotate(45deg)` : `rotate(0deg)`,
+        width: booleans ? `40px` : `44px`,
+        top: booleans ? `10px` : `0px`,
+    });
+
+    const line_spring_C = useSpring({
+        transform: booleans ? `rotate(-45deg)` : `rotate(0deg)`,
+        width: booleans ? `40px` : `20px`,
+        top: booleans ? `10px` : `12px`,
+    });
+
+    const line_spring_R = useSpring({
+        transform: booleans ? `rotate(-45deg)` : `rotate(0deg)`,
+        width: booleans ? `40px` : `32px`,
+        top: booleans ? `10px` : `22px`,
+    });
+
     return (
         <React.Fragment>
-            <nav id="l-navigation" className={state.classnames}>
-                <div className="hamburger-menu" onClick={()=>classname_toggle()}>
-                   <span className="hamburger-line"></span><span className="hamburger-line"></span><span className="hamburger-line"></span>
+            <animated.nav id="l-navigation" style={spring}>
+                <div className="hamburger-menu" onClick={()=>boolAct(!booleans)}>
+                   <animated.span className="hamburger-line" style={line_spring_L}></animated.span>
+                   <animated.span className="hamburger-line" style={line_spring_C}></animated.span>
+                   <animated.span className="hamburger-line" style={line_spring_R}></animated.span>
                 </div>
-                <ul className="navi-ul">
-                    {Urls.map((value,index)=>(
-                        <li className="navi-item"><Link to={value.url_name}  onClick={()=>classname_toggle()}>{value.names}</Link></li>
+                <animated.ul className="navi-ul">
+                    {trails.map((key, index)=>(
+                        <animated.li className="navi-item" style={{...key}}><Link to={Urls[index].url_name}  onClick={()=>boolAct(!booleans)}>{Urls[index].names}</Link></animated.li>
                     ))}
-                </ul>
-            </nav>
+                </animated.ul>
+            </animated.nav>
         </React.Fragment>
     )
 }
