@@ -1,14 +1,7 @@
 import React, {useCallback} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useSpring, useTrail, animated, config} from 'react-spring';
+import {useDispatch} from 'react-redux';
+import {useTrail, animated, config} from 'react-spring';
 import { Link } from "react-router-dom";
-import { initialState, reducer, State } from '../../../store';
-
-//アニメーションで使う
-interface Animation {
-    o:number;
-    from: {o:number};
-}
 
 //このコンポーネントのみで使う
 interface LocalValue {
@@ -18,7 +11,6 @@ interface LocalValue {
 }
 
 const TopMain = () => {
-    const selector = useSelector((state: State) => state);
     const dispatch = useDispatch();
 
     const titleChange = useCallback(
@@ -62,11 +54,11 @@ const TopMain = () => {
     }
 
     //----------------アニメーション----------------
-    const spring_anim = useSpring<Animation>({
-        o: 1,
-        from: {o: 0},
-        config: {velocity: 0.2, duration: 2000},
-    });
+    // const spring_anim = useSpring<Animation>({
+    //     o: 1,
+    //     from: {o: 0},
+    //     config: {velocity: 0.2, duration: 2000},
+    // });
 
     //トレイルアニメーション
     const trail_anim = useTrail(local_value.slice_text.length, {

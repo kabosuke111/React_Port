@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
-import thunk from 'redux-thunk';
-import {reducerWithInitialState} from 'typescript-fsa-reducers';
-import {actionCreatorFactory} from '../node_modules/typescript-fsa';
+// import thunk from 'redux-thunk';
+// import {reducerWithInitialState} from 'typescript-fsa-reducers';
+// import {actionCreatorFactory} from '../node_modules/typescript-fsa';
 
 export interface State {
     site_title: string;

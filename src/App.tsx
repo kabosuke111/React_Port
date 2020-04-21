@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {useTransition,animated, config} from 'react-spring';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import './css/App.css';
 import Header from './components/Header';
 import TopContainer from './components/top/TopContainer';
 import DepressionContainer from './components/page_depression/DepressionContainer';
-import { BrowserRouter as Router, Route, RouteComponentProps } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { State } from './store';
 
 interface localProps {
@@ -21,7 +21,7 @@ const WINDOW_TOP = () => {
 const CreatePage = (props: localProps) => {
   const selector = useSelector((state: State) => state);
 
-  const [toggle, toggleSet] = useState(props.title);
+  const [toggle] = useState(props.title);
 
   const transitions = useTransition(toggle, null, {
     config: config.slow,
@@ -55,12 +55,12 @@ const CreatePage = (props: localProps) => {
 const App:React.FC = () => {
   
   return (
-    <React.Fragment>
+    <div>
       <Router>
         <Route exact path="/" render={() => <CreatePage title="top" />} ></Route>
         <Route path="/depression/"  render={() => <CreatePage title="depression" />} ></Route>
       </Router>
-    </React.Fragment>
+    </div>
   );
 }
 

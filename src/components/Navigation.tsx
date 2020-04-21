@@ -1,6 +1,6 @@
 
-import React, {useState, useRef} from 'react';
-import {useTrail, animated, useChain, useSpring} from 'react-spring';
+import React, {useState} from 'react';
+import {useTrail, animated, useSpring} from 'react-spring';
 import { Link } from "react-router-dom";
 
 const Navigation: React.FC = () => {

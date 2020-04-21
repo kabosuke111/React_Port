@@ -1,5 +1,5 @@
 
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 import {useSpring, useTrail, animated, config} from 'react-spring';
 import Image from '../../../images/depression_main_image.jpg';
 
