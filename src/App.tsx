@@ -5,7 +5,7 @@ import './css/App.css';
 import Header from './components/Header';
 import TopContainer from './components/top/TopContainer';
 import DepressionContainer from './components/page_depression/DepressionContainer';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route, HashRouter } from "react-router-dom";
 import { State } from './store';
 
 interface localProps {
@@ -56,10 +56,12 @@ const App:React.FC = () => {
   
   return (
     <div>
-      <Router>
-        <Route exact path="/" render={() => <CreatePage title="top" />} ></Route>
-        <Route path="/depression/"  render={() => <CreatePage title="depression" />} ></Route>
-      </Router>
+      <HashRouter>
+        <Router>
+          <Route exact path="/" render={() => <CreatePage title="top" />} ></Route>
+          <Route path="/depression/"  render={() => <CreatePage title="depression" />} ></Route>
+        </Router>
+      </HashRouter>
     </div>
   );
 }
