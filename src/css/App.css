@@ -20,7 +20,8 @@ html {
 body {
   background: #000;
   font-size: 1.5rem;
-  font-family: "Julius Sans One", sans-serif; }
+  font-family: "Julius Sans One", sans-serif;
+  color: #fff; }
 
 img {
   width: 100%; }
@@ -51,7 +52,7 @@ layout
 #l-navigation {
   background: black;
   position: fixed;
-  transition: 0.5s;
+  transition: 0.5s ease-out;
   z-index: 10;
   background: grey;
   top: 0;
@@ -133,7 +134,7 @@ layout
   width: 200px;
   margin: 0 auto; }
 
-.top-header_title {
+.top-header_title, .top-footer_title {
   text-align: center;
   color: #6b6b6b;
   font-size: 3.6rem;
@@ -208,6 +209,10 @@ layout
 .top-article_item {
   margin: 0px 85px 181px; }
 
+.top-footer_title {
+  position: static;
+  transform: translateX(0%); }
+
 .main_contents-title {
   text-align: center; }
 
@@ -242,6 +247,9 @@ layout
     cursor: pointer;
     background: grey;
     color: #000; }
+
+.ppp {
+  color: #fff; }
 
 /*============================================================
 

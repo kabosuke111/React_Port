@@ -44,6 +44,7 @@ body {
     background: #000;
     font-size: $main_font-size;
     font-family: $main_font;
+    color: #fff;
 }
 
 img {
@@ -81,7 +82,7 @@ layout
 #l-navigation {
     background: black;
     position: fixed;
-    transition: 0.5s;
+    transition: 0.5s ease-out;
     z-index: 10;
     background: grey;
     top: 0;
@@ -230,6 +231,10 @@ layout
     }
 }
 
+.depression_image {
+    
+}
+
 .disaster {
     .main_section-title {
         &::before {
@@ -289,6 +294,18 @@ layout
     margin: 0px 85px 181px;
 }
 
+//------------------ footer ------------------
+
+.top-footer_title {
+    @extend .top-header_title;
+    position: static;
+    transform: translateX(0%);
+}
+
+
+
+
+
 //------------------ 各記事内のルール ------------------
 .main_contents-title {
     @extend .main_section-title_inner;
@@ -303,7 +320,7 @@ layout
 
 //---------------------------------------------------------------------------
 //
-//                                module_depression
+//                                module_article
 //
 //---------------------------------------------------------------------------
 .aside_navigation-ul {
@@ -329,7 +346,9 @@ layout
         color: #000;
     }
 }
-
+.ppp {
+    color: #fff;
+}
 /*============================================================
 
 

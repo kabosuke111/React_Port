@@ -40,7 +40,7 @@ function Header(props: OwnProps) {
     <header id="l-header">
       <Navigation />
       <Link to="/">
-        <animated.h1 className="top-header_title" style={{...spring_anim}}>GREY</animated.h1>
+        <animated.h1 className="top-header_title" style={{...spring_anim}}>{props.site_title}</animated.h1>
       </Link>
     </header>
   );

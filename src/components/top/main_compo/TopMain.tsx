@@ -1,5 +1,4 @@
-import React, {useCallback} from 'react';
-import {useDispatch} from 'react-redux';
+import React from 'react';
 import {useTrail, animated, config} from 'react-spring';
 import { Link } from "react-router-dom";
 
@@ -11,11 +10,7 @@ interface LocalValue {
 }
 
 const TopMain = () => {
-    const dispatch = useDispatch();
 
-    const titleChange = useCallback(
-        () => dispatch({ type: 'CHANGE_TEXT' }), [dispatch]);
-    
     //記事の内容をここに書く。ループ処理で一気に表示する。
     const Articles = [
         {
@@ -53,13 +48,6 @@ const TopMain = () => {
         local_value.slice_text.push(local_value.change_title);
     }
 
-    //----------------アニメーション----------------
-    // const spring_anim = useSpring<Animation>({
-    //     o: 1,
-    //     from: {o: 0},
-    //     config: {velocity: 0.2, duration: 2000},
-    // });
-
     //トレイルアニメーション
     const trail_anim = useTrail(local_value.slice_text.length, {
         config: config.slow,
@@ -81,7 +69,6 @@ const TopMain = () => {
 
     return (
         <section className="l-top-container">
-            <button style={{color: "#fff"}} onClick={titleChange}>aaaa</button>
             <h2 className="top-section_title">{trail_anim.map((value,index)=>(
                 <animated.span className="top-section_title-text" style={{...value}}>
                     {local_value.slice_text[index]}
@@ -89,8 +76,8 @@ const TopMain = () => {
             ))}</h2>
             <div className="l-top-article_box">
                 {Articles.map((value,index:number)=>(
-                    <Link to={linkNames(value.classnames)}>
-                        <article className={names(value.classnames)}>
+                    <Link to={linkNames(value.classnames)} className={names(value.classnames)}>
+                        <article className="main_section">
                             <h3 className="main_section-title"><span className="main_section-title_inner">{value.title}</span></h3>
                             <p className="main_section-caption">{value.text}</p>
                         </article>

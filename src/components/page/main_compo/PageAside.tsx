@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DepressionAside = () => {
+const PageAside = () => {
     return (
         <aside className="l-article_aside">
             <ul className="aside_navigation-ul">
@@ -13,4 +13,4 @@ const DepressionAside = () => {
     );
 }
 
-export default DepressionAside;
+export default PageAside;

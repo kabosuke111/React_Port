@@ -1,12 +1,14 @@
 import React from 'react';
+interface OwnProps {
+  site_title: string;
+}
 
-function FooterCompo() {
+function FooterCompo(props: OwnProps) {
 
   return (
-    <div>
-
-
-    </div>
+    <footer id="l-footer">
+      <h1 className="top-footer_title">{props.site_title}</h1>
+    </footer>
   );
 }
 
